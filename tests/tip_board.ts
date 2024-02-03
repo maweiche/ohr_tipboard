@@ -57,7 +57,7 @@ describe("tipboard", () => {
 
   it("Add tip", async () => {
     try{
-      const tipAmount = new anchor.BN(0.5 * LAMPORTS_PER_SOL);
+      const tipAmount = new anchor.BN(50);
       const timestamp = new anchor.BN(Date.now());
       const nftMint = "ARBofYtiiKzXGWaWQZhyvCw2eXzsSACy3taWQgLpdEbX";
       // Add your test here.
@@ -70,6 +70,7 @@ describe("tipboard", () => {
         .accounts({
           tipboard: tipboard,
           to: new PublicKey("7wK3jPMYjpZHZAghjersW6hBNMgi9VAGr75AhYRqR2n"),
+          solUsdPriceAccount: new PublicKey("J83w4HKfqxwcq3BEMMkPFSppX3gqekLyLJBexebFVkix"),
           systemProgram: anchor.web3.SystemProgram.programId,
         })
         .rpc();
