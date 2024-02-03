@@ -28,11 +28,10 @@ pub mod tip_board {
 
     // Function to add a new tip to the tipboard
     pub fn add_tip(ctx: Context<AddTipContext>, amount: u64, timestamp: i64, nft_mint: String) -> Result<()> {
-        // let tipboard = &mut ctx.accounts.tipboard;
         let tipper = ctx.accounts.signer.key();
         let new_tip = Tip { tipper, amount, timestamp, nft_mint };        
 
-        // CHECK: The signer is the player who's score is being added
+        // CHECK:
         if ctx.accounts.signer.key() != new_tip.tipper {
             return Err(ErrorCode::WrongSigner.into());
         }
